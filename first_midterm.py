@@ -69,3 +69,5 @@ def jumping_frog(height_of_pipes, max_jump):
    elif  abs(height_of_pipes[-1] - height_of_pipes[-2]) > max_jump:
         return "Game over"
    else: return "Frog wins"
+
+   print(12)
