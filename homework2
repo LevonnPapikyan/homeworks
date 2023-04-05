@@ -1,66 +1,73 @@
-#homeworks
-def fu(num,lis):
-    return lis[-num:]+lis[:-num]
+# exersice one
+def triangle(size,symbol = "#"):
+    l = []
+    for i in range(1,size+1):
+        l.append([symbol] * i)
+    print(l,sep = '\n')
 
-def intersetion_of_lists(l1,l2):
-    l1_without_duplicates = []
-    intersection_list = []
-    [l1_without_duplicates.append(x) for x in l1 if x not in l1_without_duplicates]
-    for i in l1_without_duplicates:
-        if i in l2:
-            intersection_list.append(i)
-    return intersection_list
+# exercise two
+def find_gcd_(*numbers):
+    l = list(numbers)
+    def find_gcd(x, y):
+        while(y):
+            x, y = y, x % y
+        return x
+    num1=l[0]
+    num2=l[1]
+    gcd=find_gcd(num1,num2)
+   
+    for i in range(2,len(l)):
+        gcd=find_gcd(gcd,l[i])
+    return gcd
 
-def func_3(ls):
-    s=0
-    new = []
-    for i in range(0, len(ls)-1):
-        s+=ls[i]
-        new.append(s)
-    return  new
+#exercise three
+counter = 0
+def fib(n):
+    global counter
+    counter += 1
+    if n <= 1:
+        return n
+    else:
+        return fib(n-1) + fib(n-2)
+print(fib(10))
+print(counter)
 
-def func_3(ls):
-
-    new_ls = []
-    for i in range(1,len(ls)+1):
-        sum_ = 0
-        for z in [ls[j] for j in range(i)]:
-            sum_+=z
-        new_ls.append(sum_)
-    return new_ls
-
-def areBracketsBalanced(expr):
-
-    stack = []
-    for char in expr:
-        if char in ["(", "{", "["]:
- 
-            # Push the element in the stack
-            stack.append(char)
-        else:
- 
-            # IF current character is not opening
-            # bracket, then it must be closing.
-            # So stack cannot be empty at this point.
-            if not stack:
+#exercise 4
+def prime_factors(num):
+    if num<1:
+        raise "input needs positive number"
+    if num==1:
+        return 1
+    def check_prime(number):
+        for i in range(2, int(number/2)+1):
+        # If num is divisible by any number between
+        # 2 and n / 2, it is not prime
+            if (number % i) == 0:
                 return False
-            current_char = stack.pop()
-            if current_char == '(':
-                if char != ")":
-                    return False
-            if current_char == '{':
-                if char != "}":
-                    return False
-            if current_char == '[':
-                if char != "]":
-                    return False
+        else:
+                 return True
+        
+    prime_list = []
+    for i in range(2,num+1):
+       if check_prime(i):
+           if num%i==0:
+               prime_list.append(i)
+    return prime_list
 
-    # Check Empty Stack
-    if stack:
-        return False
-    return True
+#exercise 5
+def jumping_frog(height_of_pipes, max_jump):
+   fails = False
+   while len(height_of_pipes)!=2:
+    
+        if abs(height_of_pipes[-1] - height_of_pipes[-2]) > max_jump:
+           fails = True
+           break
+        else:
+           height_of_pipes.pop(-1)
+   if fails == True:
+        return "Game over"
+   elif  abs(height_of_pipes[-1] - height_of_pipes[-2]) > max_jump:
+        return "Game over"
+   else: return "Frog wins"
 
-def new_tries():
-    pass
-def function__for_tries():
-    pass
+   print(12)
