@@ -1,9 +1,9 @@
 # exersice one
-def triangle(size,symbol = "#"):
+def triangle(size, symbol="#"):
     l = []
-    for i in range(1,size+1):
+    for i in range(1, size+1):
         l.append([symbol] * i)
-    print(l,sep = '\n')
+    print(l, sep='\n')
 
 # exercise two
 def find_gcd_(*numbers):
@@ -12,15 +12,17 @@ def find_gcd_(*numbers):
         while(y):
             x, y = y, x % y
         return x
-    num1=l[0]
-    num2=l[1]
-    gcd=find_gcd(num1,num2)
+    num1 = l[0]
+    num2 = l[1]
+    gcd = find_gcd(num1, num2)
    
-    for i in range(2,len(l)):
-        gcd=find_gcd(gcd,l[i])
+    for i in range(2, len(l)):
+        gcd = find_gcd(gcd, l[i])
     return gcd
 
-#exercise three
+find_gcd_(2, 4, 6)
+
+#exercise 3
 counter = 0
 def fib(n):
     global counter
@@ -34,23 +36,22 @@ print(counter)
 
 #exercise 4
 def prime_factors(num):
-    if num<1:
+    if num < 1:
         raise "input needs positive number"
-    if num==1:
+    if num == 1:
         return 1
     def check_prime(number):
-        for i in range(2, int(number/2)+1):
+        for i in range(2, number//2+1):
         # If num is divisible by any number between
         # 2 and n / 2, it is not prime
             if (number % i) == 0:
                 return False
-        else:
-                 return True
+        return True
         
     prime_list = []
-    for i in range(2,num+1):
+    for i in range(2, num+1):
        if check_prime(i):
-           if num%i==0:
+           if num%i == 0:
                prime_list.append(i)
     return prime_list
 
@@ -70,4 +71,4 @@ def jumping_frog(height_of_pipes, max_jump):
         return "Game over"
    else: return "Frog wins"
 
-   print(12)
+print(12)
